@@ -266,4 +266,38 @@ public class ApiFunction {
                 });
     }
 
+
+    public static void updateFCM(String token_new, Callback<BaseResponse<User>> callback) {
+        NetworkingUtils.getUserApiInstance().updateFCMToken(token_new)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<BaseResponse<User>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseResponse<User> userBaseResponse) {
+                        if (userBaseResponse.getSuccess()) {
+                            callback.returnResult(userBaseResponse);
+                        } else {
+                            callback.returnErrorAll(userBaseResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+
+
 }

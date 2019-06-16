@@ -59,4 +59,6 @@ public interface ApiInterface {
     Observable<BaseResponse<BookClass>> bookClass(@Path("teacher_id") String teacher_id, @Field("schedule_id") String schedule_id, @Field("status") String status);
 
 
+
+
 }
