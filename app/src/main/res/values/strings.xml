@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">WE</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+    <string name="information">Information</string>
+    <string name="expired_date">Expired Date</string>
+    <string name="btn_login">Login</string>
+    <string name="enter_username">Please enter username</string>
+    <string name="enter_password">Please enter password</string>
+    <string name="list_teacher">Danh Sách Giáo Viên</string>
+</resources>

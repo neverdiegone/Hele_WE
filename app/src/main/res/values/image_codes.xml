@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="icon_email">&#xf0e0;</string>
+    <string name="icon_password">&#xf084;</string>
+    <string name="icon_user">&#xf2bd;</string>
+    <string name="icon_lock">&#xf023;</string>
+    <string name="icon_checkbox_checked">&#xf046;</string>
+    <string name="icon_eye">&#xf06e;</string>
+    <string name="icon_eye_closed">&#xf070;</string>
+    <string name="icon_skype">&#xf17e;</string>
+    <string name="icon_phone">&#xf095;</string>
+    <string name="icon_notification">&#xf0f3;</string>
+    <string name="icon_check">&#xf058;</string>
+    <string name="icon_back">&#xf104;</string>
+    <string name="icon_next">&#xf105;</string>
+</resources>
