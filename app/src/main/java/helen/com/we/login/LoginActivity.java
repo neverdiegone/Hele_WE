@@ -2,12 +2,20 @@ package helen.com.we.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import helen.com.we.MainActivity;
 import helen.com.we.R;
@@ -23,11 +31,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.viewLog
     private Button btnLogin;
     private EditText edtUsername, edtPassword;
     private ImageView imageView;
+    private static final String TAG = LoginActivity.class.getSimpleName();
+    private static String token = "" ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getTokenFCM();
         btnLogin = findViewById(R.id.btn_login);
         edtUsername = findViewById(R.id.edt_username);
         edtPassword = findViewById(R.id.edt_password);
@@ -63,9 +74,29 @@ public class LoginActivity extends BaseActivity implements LoginContract.viewLog
             case R.id.btn_login: {
                 String username = edtUsername.getText().toString();
                 String password = edtPassword.getText().toString();
-                mPrenseter.loginUser(username, password, "EEEEE", "ANDROID", "en");
+                mPrenseter.loginUser(username, password, token, "ANDROID", "en");
                 break;
             }
         }
+    }
+
+    private String getTokenFCM(){
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        token = task.getResult().getToken();
+                    }
+                });
+
+        return token ;
+
     }
 }
