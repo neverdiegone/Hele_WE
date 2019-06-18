@@ -288,7 +288,7 @@ public class ApiFunction {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        callback.returnError(e.getMessage());
                     }
 
                     @Override
@@ -298,6 +298,30 @@ public class ApiFunction {
                 });
     }
 
+    public static void getListBooking(String teacher_id, String index, String dateTime, Callback<BaseResponse<ScheduleList>> callback) {
+        NetworkingUtils.getUserApiInstance().getListBooking(teacher_id, index, dateTime)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<BaseResponse<ScheduleList>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
+                    }
 
+                    @Override
+                    public void onNext(BaseResponse<ScheduleList> scheduleListBaseResponse) {
+                        callback.returnResult(scheduleListBaseResponse);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.returnError(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }

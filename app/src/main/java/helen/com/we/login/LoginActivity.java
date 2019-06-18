@@ -32,7 +32,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.viewLog
     private EditText edtUsername, edtPassword;
     private ImageView imageView;
     private static final String TAG = LoginActivity.class.getSimpleName();
-    private static String token = "" ;
+    private static String token = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.viewLog
 
     @Override
     public void showError(String message) {
-        Toast.makeText(this, "" + message, Toast.LENGTH_SHORT).show();
+        Utils.showDialog(this, R.drawable.icon_error, "Đăng nhập thất bại", message);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.viewLog
         }
     }
 
-    private String getTokenFCM(){
+    private String getTokenFCM() {
 
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -96,7 +96,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.viewLog
                     }
                 });
 
-        return token ;
+        return token;
 
     }
 }

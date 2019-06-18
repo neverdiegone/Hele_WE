@@ -58,7 +58,8 @@ public interface ApiInterface {
     @POST("en/member/teacher/{teacher_id}/schedule")
     Observable<BaseResponse<BookClass>> bookClass(@Path("teacher_id") String teacher_id, @Field("schedule_id") String schedule_id, @Field("status") String status);
 
-
-
-
+    @GET("en/member/teacher/{teacher_id}/book")
+    Observable<BaseResponse<ScheduleList>> getListBooking(@Path("teacher_id") String teacher_id,
+                                                          @Query("week_index") String index,
+                                                          @Query("date") String dateTime);
 }
